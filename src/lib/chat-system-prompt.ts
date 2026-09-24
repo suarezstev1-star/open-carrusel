@@ -2,6 +2,7 @@ import type { BrandConfig } from "@/types/brand";
 import type { Carousel } from "@/types/carousel";
 import type { StylePreset } from "@/types/style-preset";
 import { DIMENSIONS, MAX_SLIDES } from "@/types/carousel";
+import { KIT_PROMPT } from "./brand-kit";
 
 export function buildSystemPrompt(
   brand: BrandConfig,
@@ -106,6 +107,12 @@ curl -s -X POST http://localhost:3000/api/style-presets \\
 - GET /api/carousels/{id} — get carousel with all slides
 - PUT /api/carousels/{id}/slides — reorder (body: { "slideIds": [...] })
 - DELETE /api/carousels/{id}/slides/{slideId} — delete slide
+
+${KIT_PROMPT}
+
+## Revisión de calidad (después de crear o editar slides)
+curl -s http://localhost:3000/api/carousels/${carousel?.id || "{ID}"}/audit
+Devuelve por slide los problemas detectados (texto cortado o desbordado, elementos fuera de la zona segura, demasiadas palabras, falta cápsula o contador). Corrige cada problema con PUT y vuelve a auditar hasta que no quede ninguno antes de decir que terminaste.
 
 ## Slide HTML rules (CRITICAL)
 
