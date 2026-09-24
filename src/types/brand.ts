@@ -28,21 +28,21 @@ export interface BrandConfig {
 }
 
 export const DEFAULT_BRAND: BrandConfig = {
-  name: "",
+  name: "Steven Suárez · Seguros de Vida",
   colors: {
-    primary: "#1a1a2e",
-    secondary: "#16213e",
-    accent: "#e94560",
-    background: "#ffffff",
-    surface: "#f5f5f5",
+    primary: "#EE2927",
+    secondary: "#0E0E0F",
+    accent: "#BA8A44",
+    background: "#FAF6ED",
+    surface: "#FFFDF8",
   },
   fonts: {
-    heading: "Inter",
-    body: "Inter",
+    heading: "Anton",
+    body: "Montserrat",
   },
   customFonts: [],
   logoPath: null,
-  styleKeywords: [],
+  styleKeywords: ["plano técnico marfil", "marcos dorados", "titulares 3D rojo y blanco", "pantallas negras con borde dorado"],
   createdAt: "",
   updatedAt: "",
 };

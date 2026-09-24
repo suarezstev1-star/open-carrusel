@@ -1,5 +1,6 @@
 import type { AspectRatio } from "@/types/carousel";
 import { DIMENSIONS } from "@/types/carousel";
+import { KIT_CSS, KIT_FONTS, usesKit } from "./brand-kit";
 
 /**
  * Extract Google Font family names from slide HTML.
@@ -31,6 +32,7 @@ export function extractFontFamilies(html: string): string[] {
       }
     }
   }
+  if (usesKit(html)) KIT_FONTS.forEach((f) => families.add(f));
   return Array.from(families);
 }
 
@@ -71,6 +73,7 @@ export function wrapSlideHtml(
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { width: ${width}px; height: ${height}px; overflow: hidden; }
   </style>
+  ${usesKit(slideHtml) ? `<style>${KIT_CSS}</style>` : ""}
 </head>
 <body>
   ${slideHtml}
