@@ -12,6 +12,14 @@ let browser: Browser | null = null;
 let exportCount = 0;
 const MAX_EXPORTS_BEFORE_RESTART = 50;
 
+const FREEZE_MOTION_CSS = `*, *::before, *::after {
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
+  animation-iteration-count: 1 !important;
+  animation-fill-mode: both !important;
+  transition: none !important;
+}`;
+
 async function getBrowser(): Promise<Browser> {
   if (browser && exportCount >= MAX_EXPORTS_BEFORE_RESTART) {
     await browser.close().catch(() => {});
@@ -100,6 +108,10 @@ export async function exportSlide(
       .catch(() => {
         // Font loading timeout — proceed with whatever loaded
       });
+
+    // Slides may use CSS motion; freeze every animation on its final frame
+    // so the PNG shows the finished design, not the first frame.
+    await page.addStyleTag({ content: FREEZE_MOTION_CSS });
 
     const screenshotBuffer = await page.screenshot({
       type: "png",
