@@ -26,7 +26,7 @@ export const C = {
 //  hi-tick    Reloj: la manecilla gira hasta su hora
 //  hi-step    Escalera: los 4 pasos se encienden en orden
 //  hi-nudge   Desliza: la flecha empuja hacia el siguiente slide
-//  hi-glow    Puerta: la palabra HERENCIA respira en oro
+//  hi-glow    Puerta: la palabra FAMILIA respira en oro
 export const MOTION_CSS = `
 @property --n { syntax: '<integer>'; inherits: false; initial-value: 0; }
 @keyframes hi-rise { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
@@ -209,7 +209,7 @@ export const T = {
     ${title ? `<h2 class="r" style="--i:1;margin-bottom:48px">${title}</h2>` : ""}
     <div class="timeline">${items.map(([k, v], i) => `<div class="r" style="--i:${i + 2}"><b>${k}</b><span>${v}</span></div>`).join("")}</div>`,
 
-  door: ({ title, sub, cta = "Escríbeme", keyword = "HERENCIA", foot = "Esto lo enseño en Herencia Infinita." }) => `
+  door: ({ title, sub, cta = "Escríbeme", keyword = "FAMILIA", foot = "Esto lo enseño en Herencia Infinita." }) => `
     <h2 class="r" style="--i:0">${title}</h2>
     <div class="rule" style="--i:1"></div>
     <p class="r" style="--i:2">${cta}</p>

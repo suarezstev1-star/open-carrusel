@@ -19,7 +19,7 @@ export const CAROUSELS = [
     name: "HI 01 · ¿Cuántos días trabajas para el banco?",
     tags: ["herencia-infinita", "construir", "familia-joven"],
     caption:
-      "Pagas la tarjeta, pagas la troca, pagas la casa… y a fin de mes no sobra nada.\n\nNo es que trabajes poco. Es que una parte de tu mes ya tiene dueño: el banco.\n\nHaz la cuenta: lo que pagas de intereses al mes ÷ lo que te entra al mes × 30. Ese es el número de días que trabajas para el banco.\n\n¿Quieres tu número? Escríbeme HERENCIA y te mando la calculadora.\n\nNi un día más para el banco.",
+      "Pagas la tarjeta, pagas la troca, pagas la casa… y a fin de mes no sobra nada.\n\nNo es que trabajes poco. Es que una parte de tu mes ya tiene dueño: el banco.\n\nHaz la cuenta: lo que pagas de intereses al mes ÷ lo que te entra al mes × 30. Ese es el número de días que trabajas para el banco.\n\n¿Quieres tu número? Escríbeme FAMILIA y te mando la calculadora.\n\nNi un día más para el banco.",
     hashtags: [...HASHTAGS, "#deudas", "#tarjetasdecredito"],
     slides: build([
       ["hook", { kicker: "Para el que trabaja de sol a sol", title: "¿Cuántos días al mes trabajas para <em>el banco</em>?", sub: "Haz la cuenta conmigo. Te va a doler." }, "Gancho · Familia joven · Motions: Subida, Trazo de oro, Subrayado"],
@@ -29,7 +29,7 @@ export const CAROUSELS = [
       ["days", { kicker: "Tu mes", n: 9, text: "9 días de cada mes trabajas solo para pagarle al banco. <em>Sin verlo.</em>", src: "Ejemplo: $900 de intereses con $3,000 netos al mes." }, "Verdad · Motion Calendario: los 9 días se pintan de vino"],
       ["stat", { kicker: "Lo que nadie te dijo", num: "34.5", unit: "¢", text: "De cada dólar que paga un joven normal, 34.5 centavos se van en intereses. Unos <em>10 días</em> de cada mes.", src: "R. Nelson Nash, «Conviértete en tu propio banquero»." }, "Verdad · Motion Golpe · dato Nash p.17 [Alta]"],
       ["text", { kicker: "La luz", title: "El problema no eres tú.", paras: ["Es para quién trabaja tu dinero.", "Lo que hoy le pagas al banco, <em>mañana te lo pagas a ti</em>."] }, "Luz · frase ancla"],
-      ["door", { title: "¿Quieres saber tu número?", sub: "y te mando la calculadora. En un minuto sabes cuántos días trabajas para el banco." }, "Puerta · Motion Puerta (HERENCIA respira en oro)"],
+      ["door", { title: "¿Quieres saber tu número?", sub: "y te mando la calculadora. En un minuto sabes cuántos días trabajas para el banco." }, "Puerta · Motion Puerta (FAMILIA respira en oro)"],
     ]),
   },
 
@@ -37,7 +37,7 @@ export const CAROUSELS = [
     name: "HI 02 · Que sus hijos no hagan una colecta",
     tags: ["herencia-infinita", "proteger", "abuelos", "itin"],
     caption:
-      "Trabajó aquí toda la vida. Y para volver a su tierra, sus hijos tuvieron que pedir en internet.\n\nDespedirse cuesta dos veces cuando la familia es de dos países: el funeral de aquí y el viaje de vuelta.\n\nSu mayor miedo no es morir. Es que sus hijos tengan que hacer una colecta.\n\nEscríbame HERENCIA y le digo cuánto cuesta despedirse en su país y cómo dejarlo resuelto.\n\nQue su dinero vuelva a casa.",
+      "Trabajó aquí toda la vida. Y para volver a su tierra, sus hijos tuvieron que pedir en internet.\n\nDespedirse cuesta dos veces cuando la familia es de dos países: el funeral de aquí y el viaje de vuelta.\n\nSu mayor miedo no es morir. Es que sus hijos tengan que hacer una colecta.\n\nEscríbame FAMILIA y le digo cuánto cuesta despedirse en su país y cómo dejarlo resuelto.\n\nQue su dinero vuelva a casa.",
     hashtags: [...HASHTAGS, "#repatriacion", "#gastosfinales"],
     slides: build([
       ["hook", { kicker: "Lo que nadie habla en casa", title: "Para volver a su tierra, sus hijos tuvieron que <em>pedir</em>.", sub: "Trabajó aquí toda la vida." }, "Gancho · Abuelos / ITIN · de usted"],
@@ -55,7 +55,7 @@ export const CAROUSELS = [
     name: "HI 03 · Las dos hermanas",
     tags: ["herencia-infinita", "construir", "hijo-que-sostiene"],
     caption:
-      "Dos hermanas, mismo sueldo. En el año 1, una tenía $5,200 y la otra $1,933.\n\nCualquiera diría que la primera tenía razón. Pero la del CD va adelante solo hasta el año 14. Después, la historia cambia.\n\nLa diferencia no fue cuánto ganaban. Fue para quién trabajaba su dinero cada vez que compraban un carro.\n\nY te lo digo de frente: esto es lento. No es para quien necesita el dinero en menos de 5 a 7 años.\n\nEscríbeme HERENCIA y te muestro la historia completa con tus números.",
+      "Dos hermanas, mismo sueldo. En el año 1, una tenía $5,200 y la otra $1,933.\n\nCualquiera diría que la primera tenía razón. Pero la del CD va adelante solo hasta el año 14. Después, la historia cambia.\n\nLa diferencia no fue cuánto ganaban. Fue para quién trabajaba su dinero cada vez que compraban un carro.\n\nY te lo digo de frente: esto es lento. No es para quien necesita el dinero en menos de 5 a 7 años.\n\nEscríbeme FAMILIA y te muestro la historia completa con tus números.",
     hashtags: [...HASHTAGS, "#nelsonnash", "#ahorro"],
     slides: build([
       ["hook", { kicker: "Una historia de Nelson Nash", title: "Dos hermanas, mismo sueldo. Una iba ganando… <em>hasta el año 14</em>.", sub: "" }, "Gancho · historia de Nash p.42-45"],
@@ -73,7 +73,7 @@ export const CAROUSELS = [
     name: "HI 04 · ¿Y quién es tu retiro?",
     tags: ["herencia-infinita", "crecer", "hijo-que-sostiene"],
     caption:
-      "Tú eres el retiro de tus papás. ¿Y quién es el tuyo?\n\nCada mes la remesa. Cada vez que suena el teléfono de allá, ya sabes. Y lo haces con amor. Pero nadie está guardando para ti.\n\nEl Seguro Social reemplaza cerca del 43% de tu ingreso, y su fondo de retiro se agota en 2032.\n\nPrimero el match de tu empleador. Después hablamos.\n\nEscríbeme HERENCIA y vemos de qué vas a vivir cuando el cuerpo ya no aguante.",
+      "Tú eres el retiro de tus papás. ¿Y quién es el tuyo?\n\nCada mes la remesa. Cada vez que suena el teléfono de allá, ya sabes. Y lo haces con amor. Pero nadie está guardando para ti.\n\nEl Seguro Social reemplaza cerca del 43% de tu ingreso, y su fondo de retiro se agota en 2032.\n\nPrimero el match de tu empleador. Después hablamos.\n\nEscríbeme FAMILIA y vemos de qué vas a vivir cuando el cuerpo ya no aguante.",
     hashtags: [...HASHTAGS, "#retiro", "#segurosocial", "#remesas"],
     slides: build([
       ["hook", { kicker: "Para el que sostiene a sus viejos", title: "Tú eres el retiro de tus papás. ¿Y quién es <em>el tuyo</em>?", sub: "" }, "Gancho · Hijo que sostiene"],
@@ -91,7 +91,7 @@ export const CAROUSELS = [
     name: "HI 05 · Los tres relojes",
     tags: ["herencia-infinita", "heredar", "abuelos"],
     caption:
-      "Tus hijos van a empezar donde tú terminaste… o donde tú empezaste. Depende de esto.\n\nEn cada familia hay tres relojes: el abuelo, el hijo y el nieto. Cada uno con su parte.\n\nNelson Nash cuenta de unos abuelos que ponían $2,000 al año por cada nieto. No les dejaron una casa: les dejaron cómo manejar el dinero.\n\nLa herencia no es lo que dejas cuando te vas. Es lo que construyes mientras vives.\n\nEscríbeme HERENCIA y armamos los tres relojes de tu familia.",
+      "Tus hijos van a empezar donde tú terminaste… o donde tú empezaste. Depende de esto.\n\nEn cada familia hay tres relojes: el abuelo, el hijo y el nieto. Cada uno con su parte.\n\nNelson Nash cuenta de unos abuelos que ponían $2,000 al año por cada nieto. No les dejaron una casa: les dejaron cómo manejar el dinero.\n\nLa herencia no es lo que dejas cuando te vas. Es lo que construyes mientras vives.\n\nEscríbeme FAMILIA y armamos los tres relojes de tu familia.",
     hashtags: [...HASHTAGS, "#legado", "#herencia"],
     slides: build([
       ["hook", { kicker: "Depende de lo que hagas hoy", title: "Tus hijos van a empezar donde tú terminaste… o donde tú <em>empezaste</em>.", sub: "" }, "Gancho · Todos"],
@@ -109,7 +109,7 @@ export const CAROUSELS = [
     name: "HI 06 · Cuándo NO te conviene",
     tags: ["herencia-infinita", "confianza", "honestidad"],
     caption:
-      "Casi nadie te lo dice en español. Yo sí: por eso me puedes creer el resto.\n\nEsto no te conviene si:\n1. Necesitas el dinero en menos de 5 a 7 años.\n2. Todavía no tienes protección ni un mes de gastos guardado.\n3. No vas a devolver lo que te prestas.\n4. Tu empleador te iguala el 401(k) y aún no lo tomas.\n5. El pago te obliga a dejar de cubrir lo básico.\n6. Alguien te lo vende como inversión o con una tasa prometida.\n\nSi aun así te conviene, se empieza por el paso 1: Proteger.\n\nEscríbeme HERENCIA y hacemos tu cuenta, sin compromiso.",
+      "Casi nadie te lo dice en español. Yo sí: por eso me puedes creer el resto.\n\nEsto no te conviene si:\n1. Necesitas el dinero en menos de 5 a 7 años.\n2. Todavía no tienes protección ni un mes de gastos guardado.\n3. No vas a devolver lo que te prestas.\n4. Tu empleador te iguala el 401(k) y aún no lo tomas.\n5. El pago te obliga a dejar de cubrir lo básico.\n6. Alguien te lo vende como inversión o con una tasa prometida.\n\nSi aun así te conviene, se empieza por el paso 1: Proteger.\n\nEscríbeme FAMILIA y hacemos tu cuenta, sin compromiso.",
     hashtags: [...HASHTAGS, "#educacionfinanciera"],
     slides: build([
       ["hook", { kicker: "Te lo digo de frente", title: "6 casos en los que esto <em>no</em> te conviene.", sub: "Guárdalo antes de que alguien te venda algo." }, "Gancho · Confianza"],
@@ -127,7 +127,7 @@ export const CAROUSELS = [
     name: "HI 07 · Me quedé sin nada",
     tags: ["herencia-infinita", "steven-por-dentro", "historia"],
     caption:
-      "Construí un negocio de un millón de dólares. Y cuando me quedé sin él, no tenía ni para el pasaje de vuelta.\n\nNo había construido nada que fuera mío.\n\nMeses sin producir, noches sin dormir, mil veces queriendo renunciar. Me sostuvo Dios y reconectar con mi porqué.\n\nAhí aprendí que el que no construye algo propio, trabaja para otro. Por eso hoy enseño a las familias a construir lo suyo.\n\n¿Qué le estás construyendo a los tuyos? Escríbeme HERENCIA.",
+      "Construí un negocio de un millón de dólares. Y cuando me quedé sin él, no tenía ni para el pasaje de vuelta.\n\nNo había construido nada que fuera mío.\n\nMeses sin producir, noches sin dormir, mil veces queriendo renunciar. Me sostuvo Dios y reconectar con mi porqué.\n\nAhí aprendí que el que no construye algo propio, trabaja para otro. Por eso hoy enseño a las familias a construir lo suyo.\n\n¿Qué le estás construyendo a los tuyos? Escríbeme FAMILIA.",
     hashtags: [...HASHTAGS, "#historiareal", "#emprendedorlatino"],
     slides: build([
       ["hook", { kicker: "Mi historia", title: "Construí un negocio de un millón de dólares. Y me quedé <em>sin nada</em>.", sub: "" }, "Gancho · Steven por dentro (frase que duele)"],
