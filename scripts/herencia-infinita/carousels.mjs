@@ -6,7 +6,7 @@
 import { build } from "./motion.mjs";
 
 const HASHTAGS = [
-  "#herenciainfinita",
+  "#segurosdevida",
   "#stevensuarez",
   "#familialatina",
   "#latinosenusa",

@@ -29,7 +29,7 @@ async function api(method, path, body) {
 
 async function main() {
   await api("PUT", "/api/brand", {
-    name: "Steven Suárez · Herencia Infinita",
+    name: "Steven Suárez · Seguros de vida",
     colors: {
       primary: C.acento,
       secondary: C.texto,

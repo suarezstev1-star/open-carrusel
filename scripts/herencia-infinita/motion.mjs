@@ -180,7 +180,7 @@ export function frame({ index, total, body, door = false, cover = false }) {
     : `<span class="swipe">Desliza <i>→</i></span>`;
   return `<style>${MOTION_CSS}${BASE_CSS}</style>
 <div class="hi${door ? " door" : ""}${cover ? " cover" : ""}">
-  <header><span class="pg">${pg}</span><span>HERENCIA INFINITA</span></header>
+  <header><span class="pg">${pg}</span><span>SEGUROS DE VIDA</span></header>
   <main>
 ${esc(body)}
   </main>
