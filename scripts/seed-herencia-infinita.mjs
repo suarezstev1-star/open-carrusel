@@ -6,11 +6,14 @@
 //   BASE_URL=http://localhost:3001 node scripts/seed-herencia-infinita.mjs
 //
 // Si un carrusel con el mismo nombre ya existe, se salta (no duplica).
+// Con --reemplazar, los que ya existen se borran y se vuelven a crear con la
+// versión nueva (se pierden los cambios hechos a mano en esos carruseles).
 
 import { CAROUSELS } from "./herencia-infinita/carousels.mjs";
 import { C } from "./herencia-infinita/motion.mjs";
 
 const BASE = process.env.BASE_URL || "http://localhost:3000";
+const REPLACE = process.argv.includes("--reemplazar");
 
 async function api(method, path, body) {
   const res = await fetch(`${BASE}${path}`, {
@@ -48,12 +51,15 @@ async function main() {
   console.log("✓ Marca Casa de Oro");
 
   const { carousels: existing } = await api("GET", "/api/carousels");
-  const names = new Set(existing.map((c) => c.name));
+  const byName = new Map(existing.map((c) => [c.name, c.id]));
 
   for (const c of CAROUSELS) {
-    if (names.has(c.name)) {
-      console.log(`· Ya existe: ${c.name}`);
-      continue;
+    if (byName.has(c.name)) {
+      if (!REPLACE) {
+        console.log(`· Ya existe: ${c.name} (usa --reemplazar para actualizarlo)`);
+        continue;
+      }
+      await api("DELETE", `/api/carousels/${byName.get(c.name)}`);
     }
     const created = await api("POST", "/api/carousels", {
       name: c.name,

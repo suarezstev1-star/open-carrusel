@@ -27,6 +27,15 @@ export const C = {
 //  hi-step    Escalera: los 4 pasos se encienden en orden
 //  hi-nudge   Desliza: la flecha empuja hacia el siguiente slide
 //  hi-glow    Puerta: la palabra FAMILIA respira en oro
+// Adaptados de los efectos de video (Digital zoom, iPhone mockup, Checklist,
+// Headline wall, Chart grow, Cover story, Glass type):
+//  hi-punch   Zoom digital: el gancho hace dos punch-ins secos y vuelve
+//  hi-phone   iPhone: el teléfono entra desde el borde y se llena fila a fila
+//  hi-ck      Checklist: cada ítem se tilda con un check que rebota
+//  hi-note    Pared de titulares: las notas se pegan una a una
+//  hi-draw    Curva que crece: la línea se dibuja y aparece la pastilla
+//  hi-letter  Portada: las letras gigantes suben de a una
+//  hi-shine   Vidrio: un brillo cruza la palabra FAMILIA
 export const MOTION_CSS = `
 @property --n { syntax: '<integer>'; inherits: false; initial-value: 0; }
 @keyframes hi-rise { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
@@ -38,6 +47,15 @@ export const MOTION_CSS = `
 @keyframes hi-tick { from { transform: rotate(-300deg); } to { transform: rotate(0deg); } }
 @keyframes hi-step { from { background: ${C.tarjeta}; color: ${C.oroTexto}; transform: scale(.8); } to { background: ${C.verde}; color: ${C.crema}; transform: scale(1); } }
 @keyframes hi-nudge { 0%, 60%, 100% { transform: translateX(0); } 30% { transform: translateX(14px); } }
+@keyframes hi-punch { 0%, 34% { transform: scale(1); } 35%, 62% { transform: scale(1.07); } 63%, 88% { transform: scale(1.14); } 89%, 100% { transform: scale(1); } }
+@keyframes hi-phone { from { opacity: 0; transform: translateX(-140%) rotate(-6deg); } to { opacity: 1; transform: rotate(-6deg); } }
+@keyframes hi-ck { 0% { background: transparent; border-color: ${C.linea}; color: transparent; transform: scale(.6); } 60% { transform: scale(1.18); } 100% { background: ${C.verde}; border-color: ${C.verde}; color: ${C.crema}; transform: scale(1); } }
+@keyframes hi-ink { from { color: rgba(43,33,24,.22); } to { color: ${C.cafe}; } }
+@keyframes hi-note { from { opacity: 0; transform: translateY(-40px) rotate(var(--r)) scale(.9); } to { opacity: 1; transform: rotate(var(--r)); } }
+@keyframes hi-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes hi-letter { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: none; } }
+@keyframes hi-slowzoom { from { transform: scale(1.05); } to { transform: scale(1); } }
+@keyframes hi-shine { from { background-position: 100% 0; } to { background-position: 0 0; } }
 @keyframes hi-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(184,134,46,0); } 50% { box-shadow: 0 0 0 18px rgba(184,134,46,.22); } }
 `;
 
@@ -96,6 +114,49 @@ const BASE_CSS = `
 .hi .steps i { width: 138px; height: 138px; border-radius: 50%; border: 4px solid ${C.verde}; display: flex; align-items: center; justify-content: center; font-family: Fraunces, serif; font-style: normal; font-weight: 700; font-size: 64px; animation: hi-step .5s ease-out both; animation-delay: calc(var(--i) * .3s + .5s); }
 .hi .steps span { font-size: 36px; font-weight: 700; }
 .hi .word { display: inline-block; font-family: Fraunces, serif; font-weight: 700; font-size: 112px; letter-spacing: .05em; border: 5px solid ${C.oro}; border-radius: 28px; padding: 18px 56px 26px; margin: 20px 0 48px; animation: hi-glow 2.4s ease-in-out 1s infinite both; }
+.hi .punch { transform-origin: 20% 50%; animation: hi-punch 2.4s linear 1.1s both; }
+.hi .glassword { display: inline-block; font-family: Fraunces, serif; font-weight: 800; font-size: 158px; line-height: 1.02; letter-spacing: .01em; margin: 6px 0 34px; color: transparent; background: linear-gradient(100deg, ${C.crema} 42%, #ffffff 48%, #F3E3BE 52%, ${C.crema} 58%) 100% 0 / 300% 100%; -webkit-background-clip: text; background-clip: text; filter: drop-shadow(0 10px 18px rgba(0,0,0,.22)); animation: hi-rise .8s cubic-bezier(.2,.7,.2,1) .5s both, hi-shine 1.1s ease-in-out 1.5s both; }
+.hi .glassrule { width: 100%; height: 6px; background: ${C.oro}; border-radius: 4px; transform-origin: left; animation: hi-line 1s cubic-bezier(.6,0,.2,1) 1.2s both; margin-bottom: 40px; }
+.hi .phonewrap { display: grid; grid-template-columns: 372px 1fr; gap: 56px; align-items: center; }
+.hi .phone { height: 744px; border-radius: 62px; background: ${C.cafe}; padding: 16px; box-shadow: 0 34px 60px rgba(43,33,24,.28); animation: hi-phone .7s cubic-bezier(.2,.7,.2,1) .2s both; }
+.hi .phone .scr { height: 100%; border-radius: 48px; background: ${C.tarjeta}; padding: 84px 28px 28px; position: relative; display: flex; flex-direction: column; }
+.hi .phone .island { position: absolute; top: 20px; left: 50%; width: 118px; height: 34px; margin-left: -59px; border-radius: 20px; background: ${C.cafe}; }
+.hi .phone .app { font-size: 22px; font-weight: 700; letter-spacing: .16em; color: ${C.oroTexto}; text-transform: uppercase; }
+.hi .phone h4 { font-family: Fraunces, serif; font-weight: 600; font-size: 40px; line-height: 1.08; margin: 10px 0 22px; }
+.hi .phone .row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: 24px; padding: 16px 0; border-bottom: 2px solid ${C.linea}; animation: hi-rise .45s ease-out both; animation-delay: calc(var(--i) * .4s + .9s); }
+.hi .phone .row b { font-family: Fraunces, serif; font-size: 30px; color: ${C.oroTexto}; white-space: nowrap; }
+.hi .phone .res { margin-top: auto; background: ${C.vino}; color: ${C.crema}; border-radius: 26px; padding: 22px 24px; animation: hi-pop .6s cubic-bezier(.2,.7,.2,1) 2.3s both; }
+.hi .phone .res b { display: block; font-family: Fraunces, serif; font-size: 74px; line-height: 1; }
+.hi .phone .res span { font-size: 22px; }
+.hi .side h2 { font-size: 64px; }
+.hi .side p { font-size: 42px; }
+.hi .orb { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(184,134,46,.22), rgba(184,134,46,0) 70%); pointer-events: none; }
+.hi .glass { position: relative; background: rgba(255,253,248,.62); -webkit-backdrop-filter: blur(22px); backdrop-filter: blur(22px); border: 2px solid rgba(232,223,207,.9); border-radius: 32px; padding: 44px 48px; box-shadow: 0 24px 50px rgba(43,33,24,.10); animation: hi-rise .55s cubic-bezier(.2,.7,.2,1) .15s both; }
+.hi .glass .lab { display: flex; align-items: center; gap: 14px; font-size: 26px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: ${C.oroTexto}; margin-bottom: 18px; }
+.hi .glass .lab::before { content: ''; width: 14px; height: 14px; border-radius: 50%; background: ${C.oro}; }
+.hi .glass ul { list-style: none; display: flex; flex-direction: column; }
+.hi .glass li { display: grid; grid-template-columns: 76px 1fr; align-items: start; gap: 8px; font-size: 42px; line-height: 1.26; padding: 22px 0; border-top: 2px solid ${C.linea}; }
+.hi .glass li:first-child { border-top: 0; }
+.hi .glass .ck { width: 58px; height: 58px; border-radius: 50%; border: 3px solid ${C.linea}; display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 800; margin-top: 2px; animation: hi-ck .5s ease-out both; animation-delay: calc(var(--i) * .7s + .8s); }
+.hi .glass li span { animation: hi-ink .4s ease-out both; animation-delay: calc(var(--i) * .7s + .8s); }
+.hi .wall { position: relative; height: 820px; }
+.hi .note { position: absolute; width: 420px; background: ${C.tarjeta}; border: 1px solid ${C.linea}; padding: 44px 34px 32px; box-shadow: 0 16px 30px rgba(43,33,24,.16); transform: rotate(var(--r)); animation: hi-note .55s cubic-bezier(.3,1.4,.5,1) both; animation-delay: calc(var(--i) * .22s + .4s); }
+.hi .note::before { content: ''; position: absolute; top: 14px; left: 50%; width: 24px; height: 24px; margin-left: -12px; border-radius: 50%; background: ${C.vino}; box-shadow: 0 3px 5px rgba(0,0,0,.25); }
+.hi .note b { display: block; font-family: Fraunces, serif; font-weight: 600; font-size: 46px; line-height: 1.05; }
+.hi .note span { display: block; font-family: Fraunces, serif; font-weight: 700; font-size: 36px; white-space: nowrap; color: ${C.oroTexto}; margin-top: 10px; }
+.hi .chart { width: 100%; height: auto; overflow: visible; }
+.hi .chart .l { fill: none; stroke-width: 9; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: hi-draw 1.4s ease-in-out both; }
+.hi .chart .pill { transform-box: fill-box; transform-origin: left center; animation: hi-pop .55s cubic-bezier(.2,.7,.2,1) 2.2s both; }
+.hi .chart text { font-family: Figtree, sans-serif; }
+.hi .legend { display: flex; gap: 40px; font-size: 34px; font-weight: 600; margin-top: 18px; }
+.hi .legend i { display: inline-block; width: 40px; height: 9px; border-radius: 5px; vertical-align: middle; margin-right: 14px; }
+.hi.cover main { justify-content: center; }
+.hi .covergo { animation: hi-slowzoom 4s ease-out both; transform-origin: 50% 30%; }
+.hi .issue { display: flex; justify-content: space-between; font-size: 26px; font-weight: 700; letter-spacing: .18em; color: ${C.oroTexto}; border-bottom: 2px solid ${C.cafe}; padding-bottom: 16px; }
+.hi .bigword { font-family: Fraunces, serif; font-weight: 800; font-size: 204px; line-height: .9; letter-spacing: -.03em; color: ${C.verde}; margin: 30px 0 10px -8px; white-space: nowrap; }
+.hi .bigword span { display: inline-block; animation: hi-letter .6s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i) * .07s + .3s); }
+.hi .coverline { font-family: Fraunces, serif; font-weight: 600; font-size: 66px; line-height: 1.08; margin-top: 34px; }
+.hi .coverdek { font-size: 40px; line-height: 1.3; margin-top: 28px; opacity: .85; }
 .hi .quote { font-family: Fraunces, serif; font-weight: 600; font-size: 84px; line-height: 1.12; }
 .hi .quote::before { content: '«'; color: ${C.oro}; }
 .hi .quote::after { content: '»'; color: ${C.oro}; }
@@ -111,13 +172,13 @@ const esc = (s) => String(s);
  * Envuelve el contenido de un slide con la estructura común de la marca:
  * contador arriba, firma «Steven Suárez» abajo y «Desliza →» salvo en la puerta.
  */
-export function frame({ index, total, body, door = false }) {
+export function frame({ index, total, body, door = false, cover = false }) {
   const pg = `${String(index).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
   const swipe = door
     ? `<span class="swipe" style="color:${C.crema}">Que tu dinero vuelva a casa</span>`
     : `<span class="swipe">Desliza <i>→</i></span>`;
   return `<style>${MOTION_CSS}${BASE_CSS}</style>
-<div class="hi${door ? " door" : ""}">
+<div class="hi${door ? " door" : ""}${cover ? " cover" : ""}">
   <header><span class="pg">${pg}</span><span>HERENCIA INFINITA</span></header>
   <main>
 ${esc(body)}
@@ -132,7 +193,7 @@ ${esc(body)}
 export const T = {
   hook: ({ kicker, title, sub }) => `
     ${kicker ? `<div class="kicker r" style="--i:0">${kicker}</div>` : ""}
-    <h1 class="r" style="--i:1">${title}</h1>
+    <div class="punch"><h1 class="r" style="--i:1">${title}</h1></div>
     <div class="rule" style="--i:3"></div>
     ${sub ? `<p class="r muted" style="--i:4">${sub}</p>` : ""}`,
 
@@ -209,11 +270,63 @@ export const T = {
     ${title ? `<h2 class="r" style="--i:1;margin-bottom:48px">${title}</h2>` : ""}
     <div class="timeline">${items.map(([k, v], i) => `<div class="r" style="--i:${i + 2}"><b>${k}</b><span>${v}</span></div>`).join("")}</div>`,
 
+  phone: ({ kicker, title, paras = [], app, screen, rows, result, resultLabel, src }) => `
+    ${kicker ? `<div class="kicker r" style="--i:0">${kicker}</div>` : ""}
+    <div class="phonewrap">
+      <div class="phone"><div class="scr"><div class="island"></div>
+        <div class="app">${app}</div><h4>${screen}</h4>
+        ${rows.map(([k, v], i) => `<div class="row" style="--i:${i}"><span>${k}</span><b>${v}</b></div>`).join("")}
+        <div class="res"><b>${result}</b><span>${resultLabel}</span></div>
+      </div></div>
+      <div class="side"><h2 class="r" style="--i:1">${title}</h2><div class="rule" style="--i:2"></div>
+        ${paras.map((p, i) => `<p class="r" style="--i:${i + 3}">${p}</p>`).join("")}</div>
+    </div>
+    ${src ? `<div class="src r" style="--i:8">${src}</div>` : ""}`,
+
+  check: ({ kicker, title, label, items, start = 1, src }) => `
+    <div class="orb" style="width:520px;height:520px;right:-140px;top:300px"></div>
+    <div class="orb" style="width:380px;height:380px;left:-120px;bottom:180px"></div>
+    ${kicker ? `<div class="kicker r" style="--i:0">${kicker}</div>` : ""}
+    ${title ? `<h2 class="r" style="--i:1">${title}</h2><div class="rule" style="--i:2"></div>` : ""}
+    <div class="glass"><div class="lab">${label}</div><ul>${items.map((it, i) => `<li><i class="ck" style="--i:${i}">✓</i><span style="--i:${i}"><b style="font-family:Fraunces,serif;color:${C.oroTexto};margin-right:12px">${i + start}.</b>${it}</span></li>`).join("")}</ul></div>
+    ${src ? `<div class="src r" style="--i:6">${src}</div>` : ""}`,
+
+  wall: ({ kicker, title, notes, src }) => `
+    ${kicker ? `<div class="kicker r" style="--i:0">${kicker}</div>` : ""}
+    ${title ? `<h2 class="r" style="--i:1">${title}</h2>` : ""}
+    <div class="wall">${notes.map(([k, v, x, y, r], i) => `<div class="note" style="--i:${i};--r:${r}deg;left:${x}px;top:${y}px"><b>${k}</b><span>${v}</span></div>`).join("")}</div>
+    ${src ? `<div class="src r" style="--i:7;margin-top:0">${src}</div>` : ""}`,
+
+  chart: ({ kicker, title, text, src }) => `
+    ${kicker ? `<div class="kicker r" style="--i:0">${kicker}</div>` : ""}
+    ${title ? `<h2 class="r" style="--i:1">${title}</h2>` : ""}
+    <svg class="chart" viewBox="0 0 888 540" aria-hidden="true">
+      ${[1, 7, 14, 21, 28].map((y) => { const x = 30 + (y / 28) * 828; return `<line x1="${x}" y1="40" x2="${x}" y2="470" stroke="${C.linea}" stroke-width="2"/><text x="${x}" y="515" text-anchor="middle" font-size="28" font-weight="700" fill="${C.oroTexto}">Año ${y}</text>`; }).join("")}
+      <line x1="30" y1="470" x2="858" y2="470" stroke="${C.cafe}" stroke-width="3"/>
+      <path class="l" pathLength="1" d="M30 360 C 300 320, 600 270, 858 230" stroke="${C.barro}" style="animation-delay:.3s"/>
+      <path class="l" pathLength="1" d="M30 440 C 230 420, 360 340, 444 296 S 700 120, 858 60" stroke="${C.verde}" style="animation-delay:.6s;filter:drop-shadow(0 0 10px rgba(31,77,58,.45))"/>
+      <circle cx="444" cy="296" r="13" fill="${C.oro}" stroke="${C.tarjeta}" stroke-width="5" class="pill"/>
+      <g class="pill"><rect x="480" y="322" width="236" height="62" rx="31" fill="${C.verde}"/><text x="598" y="364" text-anchor="middle" font-size="30" font-weight="800" fill="${C.crema}" letter-spacing="2">AÑO 14 ↗</text></g>
+    </svg>
+    <div class="legend r" style="--i:3"><span><i style="background:${C.barro}"></i>La del CD</span><span><i style="background:${C.verde}"></i>Su propio dinero</span></div>
+    <p class="big r" style="--i:5;margin-top:34px">${text}</p>
+    ${src ? `<div class="src r" style="--i:7">${src}</div>` : ""}`,
+
+  cover: ({ issue, word, line, dek }) => `
+    <div class="covergo">
+      <div class="issue r" style="--i:0"><span>${issue[0]}</span><span>${issue[1]}</span></div>
+      <div class="bigword">${[...word].map((ch, i) => `<span style="--i:${i}">${ch}</span>`).join("")}</div>
+      <div class="rule" style="--i:6;margin:20px 0 0"></div>
+      <div class="coverline r" style="--i:7">${line}</div>
+      <p class="coverdek r" style="--i:8">${dek}</p>
+    </div>`,
+
   door: ({ title, sub, cta = "Escríbeme", keyword = "FAMILIA", foot = "Esto lo enseño en Herencia Infinita." }) => `
     <h2 class="r" style="--i:0">${title}</h2>
     <div class="rule" style="--i:1"></div>
     <p class="r" style="--i:2">${cta}</p>
-    <div><span class="word r" style="--i:3">${keyword}</span></div>
+    <div><span class="glassword">${keyword}</span></div>
+    <div class="glassrule"></div>
     <p class="r" style="--i:4">${sub}</p>
     <div class="src r" style="--i:6">${foot}</div>`,
 };
@@ -222,7 +335,7 @@ export const T = {
 export function build(slides) {
   const total = slides.length;
   return slides.map(([tpl, data, notes], i) => ({
-    html: frame({ index: i + 1, total, body: T[tpl](data), door: tpl === "door" }),
+    html: frame({ index: i + 1, total, body: T[tpl](data), door: tpl === "door", cover: tpl === "cover" }),
     notes: notes || "",
   }));
 }
