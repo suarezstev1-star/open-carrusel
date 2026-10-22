@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Carga la marca «Casa de Oro» y los carruseles de Steven Suárez · Herencia
+// Carga la marca (blanco, rojo, negro y marfil) y los carruseles de Steven Suárez · Herencia
 // Infinita en Open Carrusel. Requiere el servidor corriendo (npm run dev).
 //
 //   node scripts/seed-herencia-infinita.mjs            # http://localhost:3000
@@ -31,24 +31,24 @@ async function main() {
   await api("PUT", "/api/brand", {
     name: "Steven Suárez · Herencia Infinita",
     colors: {
-      primary: C.verde,
-      secondary: C.cafe,
-      accent: C.oro,
-      background: C.crema,
+      primary: C.acento,
+      secondary: C.texto,
+      accent: C.adorno,
+      background: C.fondo,
       surface: C.tarjeta,
     },
     fonts: { heading: "Fraunces", body: "Figtree" },
     styleKeywords: [
-      "Casa de Oro",
+      "blanco, rojo, negro y marfil",
       "cálido",
       "familia latina",
-      "fondo crema",
-      "verde finca",
-      "oro solo en adornos",
+      "fondo marfil",
+      "texto negro",
+      "rojo de acento",
       "motion CSS",
     ],
   });
-  console.log("✓ Marca Casa de Oro");
+  console.log("✓ Marca Steven Suárez");
 
   const { carousels: existing } = await api("GET", "/api/carousels");
   const byName = new Map(existing.map((c) => [c.name, c.id]));

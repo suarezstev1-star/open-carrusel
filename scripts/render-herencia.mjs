@@ -19,7 +19,7 @@ const b = await puppeteer.launch({ args: ["--no-sandbox", "--disable-gpu"], prot
 async function open(html, tall) {
   const p = await b.newPage();
   await p.setViewport({width:1080,height:tall?1920:1350});
-  const bg = html.includes('class="hi door') ? "#1F4D3A" : "#FAF6EE";
+  const bg = html.includes('class="hi door') ? "#B3201E" : "#F8F5EE";
   await p.setContent(`<!DOCTYPE html><html><head><meta charset="utf-8">${fonts}<style>*{margin:0;padding:0;box-sizing:border-box} html,body{width:1080px;height:${tall?1920:1350}px;overflow:hidden;background:${bg}} .stage{position:absolute;top:${tall?285:0}px;left:0}</style></head><body><div class="stage">${html}</div></body></html>`,{waitUntil:"load"});
   await p.evaluate(()=>Promise.all(["600 40px Fraunces","700 40px Fraunces","800 40px Fraunces","400 40px Figtree","700 40px Figtree"].map(f=>document.fonts.load(f))));
   await p.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
