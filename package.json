@@ -17,7 +17,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "doctor": "node scripts/doctor.mjs"
+    "doctor": "node scripts/doctor.mjs",
+    "seed:herencia": "node scripts/seed-herencia-infinita.mjs",
+    "seed:herencia:reemplazar": "node scripts/seed-herencia-infinita.mjs --reemplazar",
+    "render:herencia": "node scripts/render-herencia.mjs"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
